@@ -6,9 +6,11 @@ const messageTwo = document.getElementById('message-two');
 weatherForm.addEventListener('submit', e => {
     e.preventDefault();
     const location = search.value;
+
     messageOne.textContent = 'Loading...';
     messageTwo.textContent = '';
-    fetch(`http://localhost:3000/weather?address=${location}`).then((res) => {
+
+    fetch(`/weather?address=${location}`).then((res) => {
         res.json().then((data) => {
             if (data.error) {
                 messageOne.textContent = data.error;
